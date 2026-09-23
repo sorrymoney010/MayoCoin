@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MayoCoin profile</title>
+  <link rel="icon" href="assets/token.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/hq.css" />
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="index.html">MayoCoin</a>
+      <div class="nav-links">
+        <a href="index.html#coin">Coin</a>
+        <a href="index.html#people">People</a>
+        <a href="share.html">Share</a>
+      </div>
+    </div>
+  </header>
+  <section style="padding-top:48px">
+    <div class="wrap">
+      <div class="kicker">Profile QR</div>
+      <h2>Show this. That’s the product.</h2>
+      <div class="bag">
+        <label class="label" for="name">Your name</label>
+        <input id="name" type="text" value="Lookout" maxlength="32" style="width:100%;margin:10px 0 18px;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#1c1c1c;color:#ededed;font:16px 'IBM Plex Sans',sans-serif" />
+        <div id="who" class="qty" style="font-size:32px">Lookout</div>
+        <div class="sub">Official MAYO · Base</div>
+        <div class="ca">0x1775A38Cd04f1Da9Ec35D205491fE71DeA90aFF9</div>
+        <img id="qr" alt="Profile QR" style="width:220px;height:220px;background:#fff;border-radius:12px;padding:10px;margin:8px 0 16px" />
+        <div class="row">
+          <button class="btn-light" type="button" id="copyLink">Copy profile link</button>
+          <a class="btn-dark" href="index.html#coin">Official contract</a>
+        </div>
+        <p class="note">The QR opens this profile. It does not hold keys and it does not sell MAYO. Scan = meet the person + see the real CA.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    const input = document.getElementById("name");
+    const who = document.getElementById("who");
+    const qr = document.getElementById("qr");
+    function handle() {
+      return (input.value || "lookout").trim().replace(/\s+/g, "-").slice(0, 32) || "lookout";
+    }
+    function profileUrl() {
+      const u = new URL("share.html", window.location.href);
+      u.searchParams.set("u", handle());
+      return u.toString();
+    }
+    function draw() {
+      const name = (input.value || "Lookout").trim() || "Lookout";
+      who.textContent = name;
+      qr.src = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" + encodeURIComponent(profileUrl());
+    }
+    const q = new URLSearchParams(location.search).get("u");
+    if (q) input.value = q.replace(/-/g, " ");
+    input.addEventListener("input", draw);
+    document.getElementById("copyLink").onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(profileUrl());
+        document.getElementById("copyLink").textContent = "Copied";
+        setTimeout(() => document.getElementById("copyLink").textContent = "Copy profile link", 1200);
+      } catch (_) {}
+    };
+    draw();
+  </script>
+</body>
+</html>
