@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mayo Radar</title>
+  <link rel="icon" href="assets/token.svg" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Outfit:wght@360;450;560;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html"><img src="assets/token.svg" alt="" />MAYOCOIN</a>
+      <div class="nav-links">
+        <a href="terminal.html">Radar</a>
+        <a href="token.html">Token</a>
+        <a href="launch.html">Launch desk</a>
+      </div>
+    </div>
+  </header>
+  <section style="border-top:0">
+    <div class="wrap">
+      <div class="kicker">Mayo Radar</div>
+      <h2>Don’t trust the number. Open the jar.</h2>
+      <div class="terminal">
+        <div class="term-bar"><span>RADAR · DEMO INDEX</span><span>NO KEYS</span></div>
+        <div class="term-body">
+          <div class="search-row">
+            <input id="addr" type="text" placeholder="Paste a token or wallet address" value="0x1775A38Cd04f1Da9Ec35D205491fE71DeA90aFF9" />
+            <button class="btn" id="scoreBtn" type="button">Score</button>
+          </div>
+          <div class="score-board">
+            <div class="score-big">
+              <div class="kicker">Spread score</div>
+              <div class="score-num" id="scoreNum">—</div>
+              <div id="confidence">waiting</div>
+            </div>
+            <div class="bars" id="bars"></div>
+          </div>
+          <div class="log" id="logBox"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/radar.js"></script>
+</body>
+</html>
