@@ -3,55 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MayoCoin — Spread it. Score it first.</title>
+  <title>MayoCoin</title>
+  <meta name="description" content="MayoCoin — fixed supply money on Base. One billion. Minted once. No owner, no tax, no freeze." />
   <link rel="icon" href="assets/token.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Outfit:wght@360;450;560;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/app.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/hq.css" />
 </head>
 <body>
   <header>
     <div class="wrap nav">
-      <a class="brand" href="index.html"><img src="assets/token.svg" alt="" />MAYOCOIN</a>
+      <a class="logo" href="index.html">MayoCoin</a>
       <div class="nav-links">
-        <a href="terminal.html">Radar</a>
-        <a href="token.html">Token</a>
-        <a href="launch.html">Launch desk</a>
-        <a href="legal.html">Legal</a>
+        <a href="#coin">Coin</a>
+        <a href="#map">Map</a>
+        <a href="#fund">Fund</a>
+        <a href="token.html">Wallet</a>
       </div>
-      <a class="btn" href="terminal.html">Open the jar</a>
     </div>
   </header>
   <div class="wrap hero">
-    <div class="banner" id="statusBanner">
-      <span data-status-pre>PRE-LAUNCH · No official contract.</span>
-      <span data-status-live class="live">LIVE ON CHAIN · Official CA below</span>
-      <span class="pill" data-bind="chain.name"></span>
+    <div>
+      <div class="kicker">Fixed supply money</div>
+      <h1>MayoCoin</h1>
+      <p class="lede">One billion. Minted once. No owner, no tax, no freeze. Built like money, not like a music app and not like a brokerage product.</p>
+      <p class="status">Base live · 1.00B on the deploy wallet · no pool</p>
     </div>
-    <div class="hero-grid" style="margin-top:28px">
-      <div>
-        <div class="kicker">Radar · Desk · Agent</div>
-        <h1>Spread it.<br><em>Score it first.</em></h1>
-        <p class="lede">MayoCoin is a creamy intelligence layer for tokens and wallets. The token is the mascot. The product is the jar you can inspect.</p>
-        <div class="cta-row">
-          <a class="btn" href="terminal.html">Score an address</a>
-          <a class="btn ghost" href="token.html">Token / MetaMask</a>
-        </div>
-      </div>
-      <div class="mascot-card">
-        <img src="assets/mascot.svg" alt="Lookout Jar" />
-        <div class="cap">LOOKOUT JAR · OFFICIAL MASCOT · NOT FINANCIAL ADVICE</div>
-      </div>
+    <div class="coin-art" aria-hidden="true">
+      <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="g" cx="35%" cy="30%">
+            <stop offset="0%" stop-color="#cfcfcf"/>
+            <stop offset="55%" stop-color="#8a8a8a"/>
+            <stop offset="100%" stop-color="#3a3a3a"/>
+          </radialGradient>
+        </defs>
+        <rect width="640" height="400" fill="#0a0a0a"/>
+        <circle cx="320" cy="200" r="132" fill="url(#g)" stroke="#222" stroke-width="2"/>
+        <circle cx="320" cy="200" r="118" fill="none" stroke="#bdbdbd" stroke-width="2"/>
+        <text x="320" y="196" text-anchor="middle" font-family="Times New Roman, serif" font-size="34" fill="#1a1a1a">MAYO</text>
+        <text x="320" y="228" text-anchor="middle" font-family="Times New Roman, serif" font-size="34" fill="#1a1a1a">COIN</text>
+      </svg>
     </div>
   </div>
-  <footer>
+  <section id="coin">
     <div class="wrap">
-      <p>MayoCoin scores are not investment advice. Official CA is on the Token page only.</p>
-      <p style="margin-top:12px">© 2026 MayoCoin</p>
+      <h2>The coin</h2>
+      <div class="stats">
+        <div class="stat"><span>Name</span>MayoCoin</div>
+        <div class="stat"><span>Symbol</span>MAYO</div>
+        <div class="stat"><span>Supply</span>1,000,000,000</div>
+        <div class="stat"><span>Admin</span>None</div>
+      </div>
+      <div class="bag">
+        <div class="label">Bag on this MetaMask</div>
+        <div class="qty">1,000,000,000</div>
+        <div class="sub">MAYO · 0xdb10…26B7 · Base</div>
+        <div class="ca" id="ca">0x1775A38Cd04f1Da9Ec35D205491fE71DeA90aFF9</div>
+        <div class="row">
+          <button class="btn-light" type="button" id="copy">Copy contract</button>
+          <a class="btn-dark" href="https://basescan.org/token/0x1775A38Cd04f1Da9Ec35D205491fE71DeA90aFF9" target="_blank" rel="noopener">Explorer</a>
+          <a class="btn-dark" href="token.html">Add to MetaMask</a>
+        </div>
+        <p class="note">This is the only official contract. Sepolia and any other $MAYO ticker are not this coin. There is no liquidity pool yet. Do not buy a random MAYO.</p>
+      </div>
     </div>
+  </section>
+  <section id="map">
+    <div class="wrap">
+      <h2>Investment map</h2>
+      <p class="section-lede">Operator path: prove the coin, grow $50–$100 in real crypto, keep MAYO as the badge. This is not a token sale. Nobody buys MAYO on Webull. A thin pool is not the business.</p>
+      <div class="steps">
+        <div class="step"><div><b>01 Coin spec</b></div><span class="tag ok">Done</span><p>Fixed 1B. No admin. No extra mint. No tax. Burn only by the holder.</p></div>
+        <div class="step"><div><b>02 Base mainnet</b></div><span class="tag ok">Done</span><p>MayoCoin live on Base. 1,000,000,000 MAYO on the deploy wallet. Real chain. No pool.</p></div>
+        <div class="step"><div><b>03 Brand stack</b></div><span class="tag">Now</span><p>HQ, identity, contract page, this map. Ready when cash lands.</p></div>
+        <div class="step"><div><b>04 Load the fund</b></div><span class="tag">Next</span><p>Deposit $50–$100 on Webull. BTC / ETH / SOL only. No MAYO. No margin.</p></div>
+        <div class="step"><div><b>05 Run the sleeve</b></div><span class="tag">Later</span><p>Limit buys. $15 max per idea. Kill at 70%. Peel $20 at $140.</p></div>
+        <div class="step"><div><b>06 Optional pool</b></div><span class="tag">Later</span><p>Only after the fund is live, only with ETH you can lose, only this CA. Not how the company gets paid.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="fund">
+    <div class="wrap">
+      <h2>The fund</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="kicker">Webull sleeve</div>
+          <div class="big">$0.00</div>
+          <p>Empty. Load $50–$100 cash when you are ready. BTC / ETH / SOL only. No MAYO in this book.</p>
+        </div>
+        <div class="panel">
+          <h3>$100 sleeve</h3>
+          <p>Limits only. Spreads are wide.</p>
+          <p style="margin-top:10px">BTC 65% · ETH 25% · SOL 10% · keep $10 cash.</p>
+          <p style="margin-top:10px">No margin. $15 max per idea. Kill at $70. Peel $20 at $140.</p>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:12px">
+        <h3>Paper split</h3>
+        <p>Not in the contract. The 1B already sits with you. This is only how you might send it later.</p>
+        <p style="margin-top:10px">Earn pool 40% · Creator 20% · Liquidity 15% · Team 10% · Grants 10% · Testers 5%.</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="wrap">Official CA 0x1775A38Cd04f1Da9Ec35D205491fE71DeA90aFF9 · Base · Not investment advice.</div>
   </footer>
-  <script src="js/config.js"></script>
-  <script src="js/app.js"></script>
+  <script>
+    const ca = "0x1775A38Cd04f1Da9Ec35D205491fE71DeA90aFF9";
+    document.getElementById("copy").onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(ca);
+        document.getElementById("copy").textContent = "Copied";
+        setTimeout(() => document.getElementById("copy").textContent = "Copy contract", 1200);
+      } catch (_) {}
+    };
+  </script>
 </body>
 </html>
