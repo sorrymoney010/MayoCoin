@@ -3,56 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MayoCoin token</title>
+  <title>MayoCoin wallet</title>
   <link rel="icon" href="assets/token.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Outfit:wght@360;450;560;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/app.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/hq.css" />
 </head>
 <body>
   <header>
     <div class="wrap nav">
-      <a class="brand" href="index.html"><img src="assets/token.svg" alt="" />MAYOCOIN</a>
+      <a class="logo" href="index.html">MayoCoin</a>
       <div class="nav-links">
-        <a href="terminal.html">Radar</a>
-        <a href="token.html">Token</a>
-        <a href="launch.html">Launch desk</a>
-        <a href="legal.html">Legal</a>
+        <a href="index.html#coin">Coin</a>
+        <a href="index.html#map">Map</a>
+        <a href="index.html#fund">Fund</a>
+        <a href="token.html">Wallet</a>
       </div>
-      <button class="btn" type="button" data-copy-ca data-status-live>Copy CA</button>
     </div>
   </header>
-  <section style="border-top:0">
+  <section style="padding-top:48px">
     <div class="wrap">
-      <div class="kicker">Official token</div>
-      <h2>$<span data-bind="ticker">MAYO</span></h2>
-      <div class="banner hot">
-        <div>
-          <div data-status-live class="live">LIVE · This is the only official contract.</div>
-          <div class="mono" data-ca style="margin-top:8px"></div>
+      <div class="kicker">Wallet</div>
+      <h2>Add MAYO on Base</h2>
+      <div class="bag">
+        <div class="label">Official contract</div>
+        <div class="ca" data-ca>0x1775A38Cd04f1Da9Ec35D205491fE71DeA90aFF9</div>
+        <div class="row">
+          <button class="btn-light" type="button" id="addBaseBtn">Add Base to MetaMask</button>
+          <button class="btn-dark" type="button" id="addTokenBtn">Add MAYO to MetaMask</button>
+          <button class="btn-dark" type="button" data-copy-ca>Copy CA</button>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn ghost" type="button" id="addBaseBtn">Add Base to MetaMask</button>
-          <button class="btn" type="button" id="addTokenBtn" data-status-live>Add MAYO to MetaMask</button>
-          <a class="btn hidden" id="tradeLink" target="_blank" rel="noopener">Open Uniswap</a>
-        </div>
-      </div>
-      <div class="grid-2" style="margin-top:24px">
-        <article class="card">
-          <img src="assets/token.svg" alt="MayoCoin" style="width:100%;border-radius:12px;max-height:280px" />
-        </article>
-        <article class="card">
-          <table>
-            <tr><th>Field</th><th>Value</th></tr>
-            <tr><td>Name</td><td data-bind="name">MayoCoin</td></tr>
-            <tr><td>Ticker</td><td data-bind="ticker">MAYO</td></tr>
-            <tr><td>Wallet</td><td data-bind="wallet">MetaMask</td></tr>
-            <tr><td>Chain</td><td><span data-bind="chain.name"></span> · ID <span data-bind="chain.id"></span></td></tr>
-            <tr><td>Supply</td><td data-bind="token.supply"></td></tr>
-            <tr><td>Decimals</td><td data-bind="token.decimals"></td></tr>
-          </table>
-        </article>
+        <p class="note">Chain ID 8453. If the name is not MayoCoin / MAYO, you have the wrong contract. No pool yet.</p>
       </div>
     </div>
   </section>
