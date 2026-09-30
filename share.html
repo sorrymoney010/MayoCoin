@@ -7,6 +7,25 @@
   <link rel="icon" href="assets/token.svg" />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/hq.css" />
+  <style>
+    .studio { padding: 48px 0 80px; }
+    .studio-grid { display: grid; grid-template-columns: 1fr 360px; gap: 28px; align-items: start; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; margin-bottom: 8px; }
+    input, select, textarea { width: 100%; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line); background: #141414; color: var(--text); font: 15px "IBM Plex Sans", sans-serif; }
+    textarea { min-height: 76px; resize: vertical; }
+    .card { background: linear-gradient(180deg, #161616 0%, #0c0c0c 100%); border: 1px solid var(--line); border-radius: 28px; padding: 28px 24px 24px; text-align: center; }
+    .mark { width: 54px; height: 54px; margin: 0 auto 16px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #d8d8d8, #6a6a6a); display: grid; place-items: center; font: 500 11px "Source Serif 4", serif; color: #1a1a1a; }
+    .kind-chip { font-family: "IBM Plex Sans", sans-serif; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+    .card h3 { font-size: 32px; font-weight: 500; letter-spacing: -0.03em; }
+    .card .line { color: var(--muted); margin: 10px 0 18px; line-height: 1.45; min-height: 44px; }
+    #qrbox { width: 236px; height: 236px; margin: 0 auto 16px; background: #fff; border-radius: 20px; padding: 14px; display: grid; place-items: center; }
+    #qrbox canvas { width: 208px !important; height: 208px !important; }
+    .ca-mini { font-family: "IBM Plex Mono", monospace; font-size: 10px; color: var(--dim); word-break: break-all; margin-top: 10px; }
+    .actions { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    @media (max-width: 800px) { .studio-grid { grid-template-columns: 1fr; } }
+    @media print { header, .editor, .actions, .note { display: none !important; } }
+  </style>
 </head>
 <body>
   <header>
@@ -18,85 +37,94 @@
       </div>
     </div>
   </header>
-  <section style="padding-top:40px">
-    <div class="wrap">
-      <div class="kicker">Community profile</div>
-      <h2>One QR. Your thing.</h2>
-      <p class="section-lede">Music, a coin, a course, or a community. Scan opens this card. Mayo is the network. The link is yours. Mayo does not take the money.</p>
-      <div class="grid-2">
-        <div class="bag">
-          <label class="label" for="name">Name</label>
-          <input id="name" maxlength="40" placeholder="Your name" />
-          <label class="label" for="kind">What you are sharing</label>
+  <div class="wrap studio">
+    <div class="kicker">Profile studio</div>
+    <h2>A card worth scanning.</h2>
+    <p class="section-lede">Music, coin, course, or community. High-contrast QR. Your link. Mayo is the badge, not the checkout.</p>
+    <div class="studio-grid">
+      <div class="bag editor">
+        <div class="field"><label class="label" for="name">Name</label><input id="name" maxlength="40" placeholder="Your name" /></div>
+        <div class="field"><label class="label" for="kind">Sharing</label>
           <select id="kind">
             <option value="community">Community</option>
             <option value="music">Music</option>
             <option value="coin">New coin</option>
             <option value="course">Course</option>
           </select>
-          <label class="label" for="blurb">One line</label>
-          <input id="blurb" maxlength="80" placeholder="What should they do after they scan?" />
-          <label class="label" for="link">Your link</label>
-          <input id="link" maxlength="200" placeholder="https:// your site, Bandcamp, course, group" />
-          <div class="row" style="margin-top:16px">
-            <button class="btn-light" type="button" id="make">Make QR</button>
-            <button class="btn-dark" type="button" id="copyLink">Copy profile link</button>
-          </div>
-          <p class="note">Your store or group goes in the link. No seed. Do not send ETH to Mayo to get listed.</p>
         </div>
-        <div class="bag">
-          <div class="label" id="kindLabel">Community</div>
-          <div class="qty" id="who" style="font-size:32px">Your name</div>
-          <p class="note" id="blurbOut">Your one line shows here.</p>
-          <a class="btn-light" id="go" href="#" target="_blank" rel="noopener" style="margin:12px 0;display:none">Open their link</a>
-          <img id="qr" alt="Profile QR" width="220" height="220" style="width:220px;height:220px;background:#fff;border-radius:12px;padding:10px;margin:12px 0" />
-          <div class="sub">Backed by the Mayo community · not a Mayo sale</div>
-          <div class="ca">0x1775A38Cd04f1Da9Ec35D205491fE71DeA90aFF9</div>
+        <div class="field"><label class="label" for="blurb">One line</label><textarea id="blurb" maxlength="90" placeholder="What should they do after they scan?"></textarea></div>
+        <div class="field"><label class="label" for="link">Your link</label><input id="link" maxlength="200" placeholder="https://" /></div>
+        <div class="row">
+          <button class="btn-light" type="button" id="make">Update card</button>
+          <button class="btn-dark" type="button" id="copyLink">Copy profile link</button>
+        </div>
+        <p class="note">QR points at this Mayo card. The button opens your link. No seeds. Mayo does not take the raise.</p>
+      </div>
+      <div>
+        <article class="card">
+          <div class="mark">MAYO</div>
+          <div class="kind-chip" id="kindLabel">Community</div>
+          <h3 id="who">Your name</h3>
+          <p class="line" id="blurbOut">Your line shows here.</p>
+          <div id="qrbox"></div>
+          <a class="btn-light" id="go" href="#" target="_blank" rel="noopener" style="display:none">Open link</a>
+          <div class="sub" style="margin-top:12px">Backed by people · not a Mayo sale</div>
+          <div class="ca-mini">0x1775A38Cd04f1Da9Ec35D205491fE71DeA90aFF9</div>
+        </article>
+        <div class="actions">
+          <button class="btn-dark" type="button" id="download">Download QR</button>
+          <button class="btn-dark" type="button" id="print">Print card</button>
         </div>
       </div>
     </div>
-  </section>
-  <style>
-    input, select { width:100%; margin:8px 0 16px; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#1c1c1c; color:#ededed; font:16px "IBM Plex Sans", sans-serif; }
-    .label { display:block; margin-top:4px; }
-  </style>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
-    const fields = ["name","kind","blurb","link"];
-    function val(id){ return (document.getElementById(id).value||"").trim(); }
-    function profileUrl(){
+    const map = { name: "u", kind: "k", blurb: "b", link: "l" };
+    function val(id) { return (document.getElementById(id).value || "").trim(); }
+    function profileUrl() {
       const u = new URL("share.html", location.href);
       u.search = "";
-      const map = {name:"u",kind:"k",blurb:"b",link:"l"};
-      fields.forEach((id)=>{ const v=val(id); if(v) u.searchParams.set(map[id], v); });
+      Object.keys(map).forEach((id) => { const v = val(id); if (v) u.searchParams.set(map[id], v); });
       return u.toString();
     }
-    function safeLink(raw){
-      try { const u=new URL(raw); if(u.protocol!=="http:"&&u.protocol!=="https:") return ""; return u.toString(); }
-      catch(_){ return ""; }
+    function safeLink(raw) {
+      try { const u = new URL(raw); return (u.protocol === "http:" || u.protocol === "https:") ? u.toString() : ""; }
+      catch (_) { return ""; }
     }
-    function draw(){
-      const kind = val("kind")||"community";
-      document.getElementById("who").textContent = val("name")||"Your name";
+    function draw() {
+      const kind = val("kind") || "community";
+      document.getElementById("who").textContent = val("name") || "Your name";
       document.getElementById("kindLabel").textContent = kind;
-      document.getElementById("blurbOut").textContent = val("blurb")||"Your one line shows here.";
+      document.getElementById("blurbOut").textContent = val("blurb") || "Your line shows here.";
       const href = safeLink(val("link"));
       const go = document.getElementById("go");
-      if(href){ go.href=href; go.style.display="inline-flex"; go.textContent="Open "+kind; }
-      else go.style.display="none";
-      document.getElementById("qr").src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+encodeURIComponent(profileUrl());
+      if (href) { go.href = href; go.style.display = "inline-flex"; go.textContent = "Open " + kind; }
+      else go.style.display = "none";
+      const box = document.getElementById("qrbox");
+      box.innerHTML = "";
+      new QRCode(box, { text: profileUrl(), width: 416, height: 416, colorDark: "#111111", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H });
     }
-    const q=new URLSearchParams(location.search);
-    if(q.get("u")) document.getElementById("name").value=q.get("u");
-    if(q.get("k")) document.getElementById("kind").value=q.get("k");
-    if(q.get("b")) document.getElementById("blurb").value=q.get("b");
-    if(q.get("l")) document.getElementById("link").value=q.get("l");
-    fields.forEach((id)=>document.getElementById(id).addEventListener("input", draw));
+    const q = new URLSearchParams(location.search);
+    if (q.get("u")) document.getElementById("name").value = q.get("u");
+    if (q.get("k")) document.getElementById("kind").value = q.get("k");
+    if (q.get("b")) document.getElementById("blurb").value = q.get("b");
+    if (q.get("l")) document.getElementById("link").value = q.get("l");
+    ["name", "blurb", "link"].forEach((id) => document.getElementById(id).addEventListener("input", draw));
     document.getElementById("kind").addEventListener("change", draw);
-    document.getElementById("make").onclick=()=>{ history.replaceState({}, "", profileUrl()); draw(); };
-    document.getElementById("copyLink").onclick=async()=>{
+    document.getElementById("make").onclick = () => { history.replaceState({}, "", profileUrl()); draw(); };
+    document.getElementById("copyLink").onclick = async () => {
       history.replaceState({}, "", profileUrl()); draw();
-      try{ await navigator.clipboard.writeText(profileUrl()); document.getElementById("copyLink").textContent="Copied"; setTimeout(()=>document.getElementById("copyLink").textContent="Copy profile link",1200);}catch(_){}
+      try { await navigator.clipboard.writeText(profileUrl()); document.getElementById("copyLink").textContent = "Copied"; setTimeout(() => document.getElementById("copyLink").textContent = "Copy profile link", 1200); } catch (_) {}
     };
+    document.getElementById("download").onclick = () => {
+      const canvas = document.querySelector("#qrbox canvas");
+      const img = document.querySelector("#qrbox img");
+      const src = canvas ? canvas.toDataURL("image/png") : (img && img.src);
+      if (!src) return;
+      const a = document.createElement("a"); a.href = src; a.download = (val("name") || "mayo") + "-qr.png"; a.click();
+    };
+    document.getElementById("print").onclick = () => window.print();
     draw();
   </script>
 </body>
